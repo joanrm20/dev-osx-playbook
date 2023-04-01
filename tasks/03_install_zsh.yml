@@ -1,0 +1,12 @@
+---
+- name: Install Zsh
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Install Zsh
+      shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      when: not (lookup("pipe","ls -d $HOME/.oh-my-zsh"))
+      tags:
+        - oh-my-zsh

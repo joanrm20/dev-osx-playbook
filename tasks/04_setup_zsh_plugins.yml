@@ -1,0 +1,17 @@
+---
+- name: Set up Zsh plugins
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Set up Zsh plugins
+      copy:
+        dest: "{{ lookup('env','HOME') }}/.zshrc"
+        content: |
+          plugins=(
+              git
+              zsh-syntax-highlighting
+              zsh-autosuggestions
+          )
+      tags:
+        - zsh-plugins

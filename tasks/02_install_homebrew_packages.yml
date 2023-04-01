@@ -1,0 +1,27 @@
+---
+- name: Install packages with Homebrew
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    homebrew_packages:
+      - git
+      - tree
+      - jq
+      - nvm
+      - spaceship-prompt
+      - go
+    cask_packages:
+      - google-chrome
+      - visual-studio-code
+      - iterm2
+      - docker
+
+  tasks:
+    - name: Install packages with Homebrew
+      community.general.homebrew:
+        name: "{{ item }}"
+        state: present
+      with_items: "{{ homebrew_packages + cask_packages }}"
+      tags:
+        - homebrew-packages

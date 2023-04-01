@@ -1,0 +1,15 @@
+---
+- name: Set up spaceship-prompt with Homebrew
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Set up spaceship-prompt with Homebrew
+      community.general.homebrew:
+        name: spaceship-prompt
+        state: present
+      when: not (lookup("file", spaceship_path) is exists)
+      vars:
+        spaceship_path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/custom/themes/spaceship-prompt"
+      tags:
+        - spaceship-prompt

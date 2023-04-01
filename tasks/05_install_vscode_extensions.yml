@@ -1,0 +1,19 @@
+---
+- name: Install VS Code extensions
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Install VS Code extensions
+      community.general.vscode_extension:
+        name: "{{ item }}"
+      with_items:
+        - ms-python.python
+        - github.vscode-pull-request-github
+        - github.copilot
+        - esbenp.prettier-vscode
+        - hashicorp.terraform
+        - vscode-icons-team.vscode-icons
+        - benjaminbenais.copilot-theme
+      tags:
+        - vscode-extensions

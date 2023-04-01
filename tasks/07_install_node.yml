@@ -1,0 +1,11 @@
+---
+- name: Install Node.js with NVM
+  hosts: localhost
+  gather_facts: no
+
+  tasks:
+    - name: Install Node.js with NVM
+      shell: |
+        source $(brew --prefix nvm)/nvm.sh && nvm install node
+      tags:
+        - nodejs
