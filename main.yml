@@ -1,0 +1,13 @@
+---
+- name: OSX Playbook setup
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - import_tasks: tasks/01_install_homebrew.yml
+    - import_tasks: tasks/02_install_homebrew_packages.yml
+    - import_tasks: tasks/03_install_zsh.yml
+    - import_tasks: tasks/04_setup_zsh_plugins.yml
+    - import_tasks: tasks/05_install_vscode_extensions.yml
+    - import_tasks: tasks/06_install_spaceship_prompt.yml
+    - import_tasks: tasks/07_install_nodejs.yml
