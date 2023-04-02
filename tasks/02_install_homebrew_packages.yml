@@ -11,6 +11,9 @@
       - nvm
       - spaceship-prompt
       - go
+      - mark-text
+      - notion
+      - neovim
     cask_packages:
       - google-chrome
       - visual-studio-code
