@@ -15,5 +15,6 @@
         - hashicorp.terraform
         - vscode-icons-team.vscode-icons
         - benjaminbenais.copilot-theme
+        - github.vscode-github-actions
       tags:
         - vscode-extensions
