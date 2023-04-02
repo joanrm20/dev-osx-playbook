@@ -1,0 +1,16 @@
+name: "Test playbook setup"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-setup:
+    runs-on: macos-latest
+    steps:
+      - name: "Checkout repository"
+        uses: actions/checkout@v3
+
+      - name: "Setup and run playbook"
+        run: bash ./setup.sh
