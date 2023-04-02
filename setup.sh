@@ -8,6 +8,13 @@ if ! command -v wheel &> /dev/null; then
     pip3 install wheel
 fi
 
+# Install ansible-lint if not already installed
+if ! command -v ansible-lint &> /dev/null; then
+    # Install ansible-lint via pip
+    echo "Installing ansible-lint via pip..."
+    pip3 install ansible-lint
+fi
+
 # Install Ansible if not already installed
 if ! command -v ansible &> /dev/null; then
     # Install Ansible via pip
