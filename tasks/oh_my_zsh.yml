@@ -1,7 +1,5 @@
 ---
-- name: Install Zsh
-  shell: |
+- name: Install Oh My Zsh
+  ansible.builtin.shell: |
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: not (lookup("pipe","ls -d $HOME/.oh-my-zsh"))
-  tags:
-    - oh-my-zsh

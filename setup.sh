@@ -22,6 +22,15 @@ if ! command -v ansible &> /dev/null; then
     pip3 install ansible
 fi
 
+# Install Ansible Galaxy roles
+echo "Installing Ansible Galaxy roles..."
+ansible-galaxy install -r requirements.yml
+
+# Install Ansible collections
+
+echo "Installing Ansible collections..."
+ansible-galaxy collection install -r requirements.yml
+
 
 # Confirm Ansible installation
 echo "Verifying Ansible installation..."

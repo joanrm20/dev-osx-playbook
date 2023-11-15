@@ -1,0 +1,50 @@
+---
+downloads: ~/.ansible-downloads/
+
+# dotfiles
+configure_dotfiles: true
+dotfiles_repo: https://github.com/joanrm20/.dotfiles.git
+# dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/development/github/.dotfiles
+dotfiles_files:
+  - .zshrc
+  - .gitignore
+  - .inputrc
+  - .osx
+  - .vimrc
+
+homebrew_installed_packages:
+  - git
+  - tree
+  - gh
+  - go
+  - openssl
+  - nvm
+  - mark-text
+  - neovim
+  - httpie
+  - spaceship
+  - zsh-history-substring-search
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - docker
+  - firefox
+  - google-chrome
+  - iterm2
+  - visual-studio-code
+  - slack
+  - notion
+
+# osx scripts
+configure_osx: true
+osx_script: "~/.macos --no-restart"
+
+# iterm2
+configure_iterm2: true

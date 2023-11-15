@@ -1,0 +1,36 @@
+---
+- name: Install and Configure iTerm2
+  block:
+    - name: Download iTerm2
+      ansible.builtin.get_url:
+        url: "https://iterm2.com/downloads/stable/iTerm2-{{ iterm2_version }}.zip"
+        dest: "{{ ansible_env.HOME }}/Downloads/iTerm2.zip"
+        mode: "0755"
+
+    - name: Unzip iTerm2
+      ansible.builtin.unarchive:
+        src: "{{ ansible_env.HOME }}/Downloads/iTerm2.zip"
+        dest: "{{ ansible_env.HOME }}/Downloads"
+
+    - name: Move iTerm2 to Applications
+      ansible.builtin.command: mv "{{ ansible_env.HOME }}/Downloads/iTerm.app" "/Applications/"
+      args:
+        creates: "/Applications/iTerm.app"
+
+    - name: Set iTerm2 as the default terminal
+      ansible.builtin.command: "sudo chsh -s /Applications/iTerm.app/Contents/MacOS/iTerm2 $USER"
+      become: true
+      changed_when: current_shell.stdout_lines[0] != "/Applications/iTerm.app/Contents/MacOS/iTerm2"
+
+    - name: Verify iTerm2 is the default terminal
+      ansible.builtin.command: "echo $SHELL"
+      register: current_shell
+      changed_when: current_shell.stdout_lines[0] != "/Applications/iTerm.app/Contents/MacOS/iTerm2"
+
+    - name: Print the current shell
+      ansible.builtin.debug:
+        var: current_shell.stdout_lines
+  rescue:
+    - name: Print when errors
+      ansible.builtin.debug:
+        msg: "I caught an error :-( {{ ansible_failed_result }}"
